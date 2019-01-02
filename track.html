@@ -1,0 +1,70 @@
+<head>
+<meta charset="UTF-8">
+<title>wri_sattrack</title> 
+</head>
+
+<script>
+function update()
+{
+	document.getElementById("azel").innerHTML="Update个屁";
+}
+
+function track()
+{
+
+	setTimeout( function(){document.getElementById("azel").innerHTML="1";}, 1 * 1000 );
+	//setTimeout( function(){document.getElementById("azel").innerHTML="2";}, 2 * 1000 );
+	//setTimeout( function(){document.getElementById("azel").innerHTML="3";}, 3 * 1000 );
+
+
+
+
+
+function predict()
+{
+	document.getElementById("azel").innerHTML="Predict个屁";
+}
+
+</script>
+
+
+
+<form action="">
+
+<input type="button" value="Update Data" onclick="update()">
+<p></p>
+
+Sat Name:<select name="SatName">
+<option value=SAUDISAT 1C (SO-50)>SAUDISAT 1C (SO-50)</option>
+<option value=OSCAR 7 (AO-7)>OSCAR 7 (AO-7)</option>
+<option value=UOSAT 2 (UO-11)>UOSAT 2 (UO-11)</option>
+<option value=LUSAT (LO-19)>LUSAT (LO-19)</option>
+<option value=ITAMSAT>ITAMSAT</option>
+<option value=RADIO ROSTO (RS-15)>RADIO ROSTO (RS-15)</option>
+<option value=JAS-2 (FO-29)>JAS-2 (FO-29)</option>
+<option value=TECHSAT 1B (GO-32)>TECHSAT 1B (GO-32)</option>
+<option value=ISS (ZARYA)>ISS (ZARYA)</option>
+<option value=PCSAT (NO-44)>PCSAT (NO-44)</option>
+
+
+
+</select>
+
+<p></p>
+<legend>Tracker Coordinates:</legend>
+Lat:<input type="text" size="10"><br>
+Lon:<input type="text" size="10"><br>
+Alt:<input type="text" size="10"><br>
+
+
+
+<input type="button" value="Track" onclick="track()">
+<input type="button" value="Predict" onclick="predict()">
+
+<p id="azel"></p>
+
+
+
+
+</form>
+
