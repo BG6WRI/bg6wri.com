@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>wri_sattrack</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Head -->
+  <div class="container">
+    <br>
+    <center><h2>BG6WRI's Sat Tracker</h2></center>
+    <hr>
+
+    <div class="col-md-4 offset-md-4 col-10 offset-1">
+      <!-- Form -->
+      <form action="#" method="post">
+        <div class="form-group">
+          <button type="button" class="btn btn-info btn-block" onclick="javascript:doUpdateData();">Update Data</button>
+        </div>
+        <div class="form-group">
+          <label for="SatName">SAT Name</label>
+          <select name="SatName" class="form-control">
+            <option value=SAUDISAT 1C (SO-50)>SAUDISAT 1C (SO-50)</option>
+            <option value=OSCAR 7 (AO-7)>OSCAR 7 (AO-7)</option>
+            <option value=UOSAT 2 (UO-11)>UOSAT 2 (UO-11)</option>
+            <option value=LUSAT (LO-19)>LUSAT (LO-19)</option>
+            <option value=ITAMSAT>ITAMSAT</option>
+            <option value=RADIO ROSTO (RS-15)>RADIO ROSTO (RS-15)</option>
+            <option value=JAS-2 (FO-29)>JAS-2 (FO-29)</option>
+            <option value=TECHSAT 1B (GO-32)>TECHSAT 1B (GO-32)</option>
+            <option value=ISS (ZARYA)>ISS (ZARYA)</option>
+            <option value=PCSAT (NO-44)>PCSAT (NO-44)</option>
+          </select>
+
+          <small id="SatNameHelp" class="form-text text-muted">选一颗星吧</small>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-12 mb-12">
+              <label for="latInput">LAT</label>
+              <input type="text" class="form-control" id="latInput" name="lat_value" placeholder="LAT Value" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-12 mb-12">
+              <label for="lonInput">LON</label>
+              <input type="text" class="form-control" id="lonInput" name="lon_value" placeholder="LON Value" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-12 mb-12">
+              <label for="altInput">ALT</label>
+              <input type="text" class="form-control" id="altInput" name="alt_value" placeholder="ALT Value" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="button" class="btn btn-warning btn-block" onclick="javascript:doTrack();">Track</button>
+          <button type="button" class="btn btn-dark btn-block" onclick="javascript:doPredict();">Predict</button>
+        </div>
+      </form>
+
+      <div class="alert alert-secondary" id="tip-box" role="alert" style="display: none;">
+        Empty Area
+      </div>
+
+    </div>
+
+    <!-- Foot -->
+    <hr>
+    <center>
+      <small>页面太短了，一点味道也没有。</small>
+    </center>
+    <br>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    function doUpdateData() {
+      alert('Yes We Cats!');
+    }
+
+    function doPredict() {
+      $("#tip-box").html("Predict a dick.");
+      $("#tip-box").show();
+    }
+
+    function doTrack() {
+      $("#tip-box").html("Track a dick.");
+      $("#tip-box").show();
+    }
+  </script>
+
+</body>
+</html>
