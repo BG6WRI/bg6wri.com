@@ -1,0 +1,145 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>wri_sattrack</title>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<script>
+var myVar
+
+	function myFunction(form) {
+
+	myVar =	setInterval(
+				function () {
+					if (form.lat.value === '') {
+						alert("Please Enter Your Latitude !");
+						form.lat.focus();
+						return false;
+					}
+					if (form.lon.value === '') {
+						alert("Please Enter Your Longitude !");
+						form.lon.focus();
+						return false;
+					}
+					if (form.alt.value === '') {
+						alert("Please Enter Your Attitude !");
+						form.alt.focus();
+						return false;
+					}
+					axios.post('/tracker', {
+						satname: form.satname.value,
+						lat: form.lat.value,
+						lon: form.lon.value,
+						alt: form.alt.value
+					})
+						.then(function (response) {
+							console.log(response);
+							document.getElementById("az").innerHTML = response.data.az;
+							document.getElementById("el").innerHTML = response.data.el;
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+				}, 1000);
+	}
+
+
+	function update(form) {
+				document.getElementById("state").innerHTML = "Now Update";
+				axios.post('/track', {
+					satname: form.satname.value,
+					lat: "update",
+					lon: "update",
+					alt: "update"
+				})
+					.then(function (response) {
+						console.log(response);
+						document.getElementById("state").innerHTML = response.data.az;
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+	}
+
+	function track() {
+		document.getElementById("output").innerHTML = "别按了，还没写好"
+	}
+
+	function stop(form) {
+		clearInterval(myVar)
+		document.getElementById("az").innerHTML = "";
+		document.getElementById("el").innerHTML = "";
+	}
+
+
+</script>
+
+<body>
+
+<form action="" id="myform" method="post">
+
+	<input type="button" value="Update Data" onclick="update(this.form)">
+	<p></p>
+
+	Sat Name:
+	<select id="satname" name="satname">
+	<option value=AO-7>OSCAR 7 (AO-7)</option>
+	<option value=AO-73>FUNCUBE-1 (AO-73)</option>
+	<option value=AO-92>FOX-1D (AO-92)</option>
+	<option value=EO-88>NAYIF-1 (EO-88)</option>
+	<option value=FO-29>JAS-2 (FO-29)</option>
+	<option value=LILACSAT 1>LILACSAT 1</option>
+	<option value=LILACSAT 2>LILACSAT 2</option>
+	<option value=NOAA 1>NOAA 1 [-]</option>
+	<option value=NOAA 2>NOAA 2 (ITOS-D) [-]</option>
+	<option value=NOAA 3>NOAA 3 [-]</option>
+	<option value=NOAA 4>NOAA 4 [-]</option>
+	<option value=NOAA 5>NOAA 5 [-]</option>
+	<option value=NOAA 6>NOAA 6 [P]</option>
+	<option value=NOAA 7>NOAA 7 [-]</option>
+	<option value=NOAA 8>NOAA 8 [-]</option>
+	<option value=NOAA 9>NOAA 9 [P]</option>
+	<option value=NOAA 10>NOAA 10 [-]</option>
+	<option value=NOAA 11>NOAA 11 [-]</option>
+	<option value=NOAA 12>NOAA 12 [-]</option>
+	<option value=NOAA 13>NOAA 13 [-]</option>
+	<option value=NOAA 14>NOAA 14 [-]</option>
+	<option value=NOAA 15>NOAA 15 [B]</option>
+	<option value=NOAA 16>NOAA 16 [-]</option>
+	<option value=NOAA 17>NOAA 17 [-]</option>
+	<option value=NOAA 18>NOAA 18 [B]</option>
+	<option value=NOAA 19>NOAA 19 [+]</option>
+	<option value=NOAA 20>NOAA 20 [+]</option>
+	<option value=SO-50>SAUDISAT 1C (SO-50)</option>
+	<option value=XW-2A>XW-2A</option>
+	<option value=XW-2B>XW-2B</option>
+	<option value=XW-2C>XW-2C</option>
+	<option value=XW-2D>XW-2D</option>
+	<option value=XW-2F>XW-2F</option>
+	</select>
+
+
+	<p></p>
+	Tracker Coordinates:<br>
+	Lat:<input type="text" id="lat" name="lat" value={{ lat }} size="10"><br>
+	Lon:<input type="text" id="lon" name="lon" value={{ lon }} size="10"><br>
+	Alt:<input type="text" id="alt" name="alt" value={{ alt }} size="10"><br>
+
+
+	<input type=button value="Predict" onclick="myFunction(this.form)">
+	<input type="button" value="Track" onclick="track()">
+	<input type=button value="Stop" onclick="stop(this.form)">
+	<!-- <input type="button" value="Predict" onclick="predict()"> -->
+
+	<p id="output"></p>
+
+	AZ:<p id="az"></p>
+	<p></p>
+	EL:<p id="el"></p>
+	<p></p>
+	State:<p id="state"></p>
+
+</form>
+</body>
+</html>
