@@ -1,1 +1,1 @@
-# bg6wri.tk
+# bg6wri.com 
